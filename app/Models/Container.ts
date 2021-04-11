@@ -2,6 +2,7 @@ import { DateTime } from 'luxon'
 import {BaseModel, belongsTo, column, BelongsTo, afterCreate, computed, afterDelete} from '@ioc:Adonis/Lucid/Orm'
 import User from 'App/Models/User'
 import Event from '@ioc:Adonis/Core/Event'
+import Env from '@ioc:Adonis/Core/Env'
 
 export default class Container extends BaseModel {
   @column({ isPrimary: true })
@@ -33,6 +34,10 @@ export default class Container extends BaseModel {
   }
   @computed()
   public get objectStorageName () {
-    return `${this.id}_${this.userId}`
+    if (Env.get('NODE_ENV') === 'development') {
+      return `${this.id}_${this.userId}_dev`
+    } else {
+      return `${this.id}_${this.userId}`
+    }
   }
 }

@@ -26,9 +26,12 @@ declare module '@ioc:Adonis/Core/Event' {
   |
   */
   import Container from 'App/Models/Container'
+  import Image from 'App/Models/Image'
 
   interface EventsList {
     'container:created': {container: Container},
     'container:deleted': {container: Container},
+    'image:created': {image: Image, tempPath: string},
+    'image:deleted': {image: Image},
   }
 }
