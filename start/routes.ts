@@ -28,7 +28,7 @@ Route.group(() => {
 
 Route.group(() => {
   Route.get('/', 'api/ContainersController.index')
-  Route.post('create', 'api/ContainersController.create')
+  Route.post('/', 'api/ContainersController.create')
   Route.get(':id', 'api/ContainersController.show').where('id', /^[0-9]+$/)
   Route.patch(':id', 'api/ContainersController.update').where('id', /^[0-9]+$/)
   Route.delete(':id', 'api/ContainersController.destroy').where('id', /^[0-9]+$/)

@@ -42,7 +42,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
       },
       useNullAsDefault: true,
       healthCheck: false,
-			debug: false,
+      debug: false,
     },
 
     /*
@@ -66,7 +66,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         database: Env.get('MYSQL_DB_NAME'),
       },
       healthCheck: false,
-			debug: false,
+      debug: false,
     },
 
   },
