@@ -3,8 +3,10 @@ import Hash from '@ioc:Adonis/Core/Hash'
 import {
   column,
   beforeSave,
-  BaseModel,
+  BaseModel, hasMany,
+  HasMany,
 } from '@ioc:Adonis/Lucid/Orm'
+import Container from 'App/Models/Container'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -21,6 +23,9 @@ export default class User extends BaseModel {
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
+
+  @hasMany(() => Container)
+  public containers: HasMany<typeof Container>
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime

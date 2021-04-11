@@ -25,3 +25,11 @@ Route.group(() => {
   Route.post('login', 'api/AuthController.create').middleware('isGuest')
   Route.get('logout', 'api/AuthController.destroy').middleware('isLoggedIn')
 }).prefix('auth')
+
+Route.group(() => {
+  Route.get('/', 'api/ContainersController.index')
+  Route.post('create', 'api/ContainersController.create')
+  Route.get(':id', 'api/ContainersController.show').where('id', /^[0-9]+$/)
+  Route.patch(':id', 'api/ContainersController.update').where('id', /^[0-9]+$/)
+  Route.delete(':id', 'api/ContainersController.destroy').where('id', /^[0-9]+$/)
+}).prefix('container').middleware('isLoggedIn')
