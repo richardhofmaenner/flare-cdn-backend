@@ -12,6 +12,9 @@ export default class AuthController {
     return response.status(200).json({ success: 'Successfully logged in.', token: token })
   }
 
-  public async destroy ({}: HttpContextContract) {
+  public async destroy ({auth, response}: HttpContextContract) {
+    await auth.logout()
+
+    return response.status(200).json({success: 'Successfully logged out.'})
   }
 }
