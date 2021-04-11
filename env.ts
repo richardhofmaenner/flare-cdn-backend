@@ -25,4 +25,9 @@ export default Env.rules({
   MYSQL_USER: Env.schema.string(),
   MYSQL_PASSWORD: Env.schema.string.optional(),
   MYSQL_DB_NAME: Env.schema.string(),
+  OVH_OPENSTACK_USER: Env.schema.string(),
+  OVH_OPENSTACK_PASSWORD: Env.schema.string(),
+  OVH_OPENSTACK_AUTH_URL: Env.schema.string(),
+  OVH_OPENSTACK_REGION: Env.schema.string(),
+  OVH_OPENSTACK_TENANT_ID: Env.schema.string(),
 })
