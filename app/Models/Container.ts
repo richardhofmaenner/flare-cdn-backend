@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon'
-import {BaseModel, belongsTo, column, BelongsTo} from '@ioc:Adonis/Lucid/Orm'
+import {BaseModel, belongsTo, column, BelongsTo, afterCreate, computed, afterDelete} from '@ioc:Adonis/Lucid/Orm'
 import User from 'App/Models/User'
+import Event from '@ioc:Adonis/Core/Event'
 
 export default class Container extends BaseModel {
   @column({ isPrimary: true })
@@ -20,4 +21,18 @@ export default class Container extends BaseModel {
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime
+
+  @afterCreate()
+  public static async emitCreateEvent (container: Container) {
+    Event.emit('container:created', {container}).then()
+  }
+
+  @afterDelete()
+  public static async emitDeleteEvent (container: Container) {
+    Event.emit('container:deleted', { container }).then()
+  }
+  @computed()
+  public get objectStorageName () {
+    return `${this.id}_${this.userId}`
+  }
 }
