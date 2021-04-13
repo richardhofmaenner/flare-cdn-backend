@@ -31,7 +31,7 @@ declare module '@ioc:Adonis/Core/Event' {
   interface EventsList {
     'container:created': {container: Container},
     'container:deleted': {container: Container},
-    'image:created': {image: Image, tempPath: string},
+    'image:created': {image: Image},
     'image:deleted': {image: Image},
   }
 }

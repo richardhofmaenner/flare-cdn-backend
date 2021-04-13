@@ -33,3 +33,7 @@ Route.group(() => {
   Route.patch(':id', 'api/ContainersController.update').where('id', /^[0-9]+$/)
   Route.delete(':id', 'api/ContainersController.destroy').where('id', /^[0-9]+$/)
 }).prefix('container').middleware('isLoggedIn')
+
+Route.group(() => {
+  Route.post('create/:id', 'api/ImagesController.create').where('id', /^[0-9]+$/)
+}).prefix('image').middleware('isLoggedIn')
